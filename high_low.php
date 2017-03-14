@@ -1,10 +1,15 @@
 <?php
-
-if ($argc == 3) {
-    $randomNumber = mt_rand($argv[1],$argv[2]); //Add empty arguments to be able to pass numbers into the random number geberator
-} else {
-	$randomNumber = mt_rand(1, 100); //Generate random number
-}
+//Conditional for new arguments: if user input is greater than 3 it will be ignored (>=) 
+if ($argc >= 3 && is_numeric($argv[1]) && is_numeric($argv[2])) {
+	$randomNumber = mt_rand($argv[1],$argv[2]);
+//if user input is not an integer, there will be an error and the game will restart
+} else if ($argc >= 3 && (!is_numeric($argv[1]) || !is_numeric($argv[2]))) {
+	fwrite(STDOUT, "Please enter 2 integers between 1 and 100" . PHP_EOL);
+	exit(0);
+//if user input is less than three the random number will trigger
+} else if ($argc < 3) {
+	$randomNumber = mt_rand(1, 100);
+} 
 
 $playGame = true; //Initialize game with boolean so that we can end the game when user guesses right
 $guesses = 1; 
