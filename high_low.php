@@ -1,7 +1,8 @@
 <?php
 
-$randomNumber = rand(1, 100); //Generate random number
-$playGame = true; //Initialize game with boolean so that we can end the game when user guesses right 
+$randomNumber = mt_rand(1, 100); //Generate random number
+$playGame = true; //Initialize game with boolean so that we can end the game when user guesses right
+$guesses = 1; 
 
 fwrite(STDOUT, 'Guess the random number... '); //write to user
 
@@ -18,14 +19,16 @@ while($playGame) {
 		echo "HIGHER" . PHP_EOL;
 		fwrite(STDOUT, 'Guess the random number... ');
 		$userNumber = fgets(STDIN);
+		$guesses ++;
 
 	} else if ($userNumber > $randomNumber) {
 		echo "LOWER" . PHP_EOL;
 		fwrite(STDOUT, 'Guess the random number... ');
 		$userNumber = fgets(STDIN);
+		$guesses++;
 
 	} else if ($randomNumber == $userNumber) {
-		echo "GOOD GUESS" . PHP_EOL;
+		echo "GOOD GUESS!" . " You made " . $guesses . " guesses." . PHP_EOL;
 		$playGame = false;
 	
 	}
