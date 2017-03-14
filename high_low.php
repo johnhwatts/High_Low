@@ -6,7 +6,7 @@ $guesses = 1;
 
 fwrite(STDOUT, 'Guess the random number... '); //write to user
 
-$userNumber = fgets(STDIN); //get input from user
+$userNumber = trim(fgets(STDIN)); //get input from user
 
 //use a while loop with conditionals inside 
 while($playGame) {
@@ -19,7 +19,7 @@ while($playGame) {
 		echo "HIGHER" . PHP_EOL;
 		fwrite(STDOUT, 'Guess the random number... ');
 		$userNumber = fgets(STDIN);
-		$guesses ++;
+		$guesses++;
 
 	} else if ($userNumber > $randomNumber) {
 		echo "LOWER" . PHP_EOL;
