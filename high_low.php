@@ -1,6 +1,11 @@
 <?php
 
-$randomNumber = mt_rand(1, 100); //Generate random number
+if ($argc == 3) {
+    $randomNumber = mt_rand($argv[1],$argv[2]); //Add empty arguments to be able to pass numbers into the random number geberator
+} else {
+	$randomNumber = mt_rand(1, 100); //Generate random number
+}
+
 $playGame = true; //Initialize game with boolean so that we can end the game when user guesses right
 $guesses = 1; 
 
