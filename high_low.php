@@ -12,23 +12,23 @@ $userNumber = trim(fgets(STDIN)); //get input from user
 while($playGame) {
 
 	if ($userNumber == 0) {
-		echo "GAME EXIT". PHP_EOL;
+		fwrite(STDOUT, "GAME EXIT". PHP_EOL);
 		$playGame = false;
 
 	} else if ($userNumber < $randomNumber) {
-		echo "HIGHER" . PHP_EOL;
+		fwrite(STDOUT, "HIGHER" . PHP_EOL);
 		fwrite(STDOUT, 'Guess the random number... ');
 		$userNumber = fgets(STDIN);
 		$guesses++;
 
 	} else if ($userNumber > $randomNumber) {
-		echo "LOWER" . PHP_EOL;
+		fwrite(STDOUT, "LOWER" . PHP_EOL);
 		fwrite(STDOUT, 'Guess the random number... ');
 		$userNumber = fgets(STDIN);
 		$guesses++;
 
 	} else if ($randomNumber == $userNumber) {
-		echo "GOOD GUESS!" . " You made " . $guesses . " guesses." . PHP_EOL;
+		fwrite(STDOUT, "GOOD GUESS!" . " You made " . $guesses . " guesses." . PHP_EOL);
 		$playGame = false;
 	
 	}
