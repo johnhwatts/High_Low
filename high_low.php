@@ -10,18 +10,23 @@ $userNumber = fgets(STDIN); //get input from user
 //use a while loop with conditionals inside 
 while($playGame) {
 
-	if ($userNumber < $randomNumber) {
-	echo "HIGHER" . PHP_EOL;
-	fwrite(STDOUT, 'Guess the random number... ');
-	$userNumber = fgets(STDIN);
+	if ($userNumber == 0) {
+		echo "GAME EXIT". PHP_EOL;
+		$playGame = false;
+
+	} else if ($userNumber < $randomNumber) {
+		echo "HIGHER" . PHP_EOL;
+		fwrite(STDOUT, 'Guess the random number... ');
+		$userNumber = fgets(STDIN);
 
 	} else if ($userNumber > $randomNumber) {
-	echo "LOWER" . PHP_EOL;
-	fwrite(STDOUT, 'Guess the random number... ');
-	$userNumber = fgets(STDIN);
+		echo "LOWER" . PHP_EOL;
+		fwrite(STDOUT, 'Guess the random number... ');
+		$userNumber = fgets(STDIN);
 
 	} else if ($randomNumber == $userNumber) {
-	echo "GOOD GUESS" . PHP_EOL;
-	$playGame = false;
+		echo "GOOD GUESS" . PHP_EOL;
+		$playGame = false;
+	
 	}
 }
